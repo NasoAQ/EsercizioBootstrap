@@ -35,10 +35,10 @@
         </div>
     </nav>
 
-    <div class="container-fluid text-center my-5" id="Preferiti">
+    <!-- <div class="container-fluid text-center my-5" id="Preferiti">
         <div class="row">
           <h2>Preferiti</h2>
-          <div class="col-12 col-md-4 col-xl-3 my-2">
+          <div class="col-12 col-sm-6 col-md-4 col-xl-3 my-2">
                 <div class="card text-bg-dark bg-gradient border-bottom border-bottom-dark" >
                     <img src="assets/tupac.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
           </div>
-          <div class="col-12 col-md-4 col-xl-3 my-2">
+          <div class="col-12 col-sm-6 col-md-4 col-xl-3 my-2">
             <div class="card text-bg-dark bg-gradient border-bottom border-bottom-dark" >
                 <img src="assets/California-Times.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -130,7 +130,7 @@
             </div>
           </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="container text-center my-5 py-5" id="Album">
         <div class="row">
@@ -232,7 +232,90 @@
       
       
 
+    <div id="card-container" class="row"></div>
 
+    <script>
+        // Array di dati delle card
+        var cardData = [
+            {
+                imgSrc: "assets/tupac.jpg",
+                title: "ALL EYEZ ON ME",
+                artist: "Tu Pac",
+                genre: "G-funk Gangsta-rap",
+                duration: "132:18"
+            },
+            // Aggiungi altri oggetti di dati per creare più card
+        ];
+
+        // Ottieni il riferimento al container delle card
+        var cardContainer = document.getElementById("card-container");
+
+        // Ciclo per creare le card dinamicamente
+        for (var i = 0; i < cardData.length; i++) {
+            // Crea gli elementi HTML per la card
+            var cardDiv = document.createElement("div");
+            cardDiv.className = "col-12 col-sm-6 col-md-4 col-xl-3 my-2";
+
+            var cardInnerDiv = document.createElement("div");
+            cardInnerDiv.className = "card text-bg-dark bg-gradient border-bottom border-bottom-dark";
+
+            var imgElement = document.createElement("img");
+            imgElement.src = cardData[i].imgSrc;
+            imgElement.className = "card-img-top";
+            imgElement.alt = "...";
+
+            var cardBodyDiv = document.createElement("div");
+            cardBodyDiv.className = "card-body";
+
+            var titleElement = document.createElement("h5");
+            titleElement.className = "card-title";
+            titleElement.textContent = cardData[i].title;
+
+            var artistElement = document.createElement("h6");
+            artistElement.className = "card-title";
+            artistElement.textContent = cardData[i].artist;
+
+            var genreElement = document.createElement("p");
+            genreElement.className = "card-text";
+            genreElement.textContent = cardData[i].genre;
+
+            var playButton = document.createElement("a");
+            playButton.href = "#";
+            playButton.className = "btn btn-success myButton";
+
+            var playIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            playIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+            playIcon.setAttribute("width", "16");
+            playIcon.setAttribute("height", "16");
+            playIcon.setAttribute("fill", "currentColor");
+            playIcon.setAttribute("class", "bi bi-play-fill");
+            playIcon.setAttribute("viewBox", "0 0 16 16");
+
+            var pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            pathElement.setAttribute("d", "m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z");
+
+            var durationElement = document.createElement("p");
+            durationElement.className = "card-text";
+            durationElement.textContent = "Durata: " + cardData[i].duration;
+
+            // Costruisci la struttura della card
+            playIcon.appendChild(pathElement);
+            playButton.appendChild(playIcon);
+
+            cardBodyDiv.appendChild(titleElement);
+            cardBodyDiv.appendChild(artistElement);
+            cardBodyDiv.appendChild(genreElement);
+            cardBodyDiv.appendChild(playButton);
+            cardBodyDiv.appendChild(durationElement);
+
+            cardInnerDiv.appendChild(imgElement);
+            cardInnerDiv.appendChild(cardBodyDiv);
+
+            cardDiv.appendChild(cardInnerDiv);
+
+            cardContainer.appendChild(cardDiv);
+        }
+    </script>
 
 
 
